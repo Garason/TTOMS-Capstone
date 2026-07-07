@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TTOMS Fleet Maintenance Dashboard</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Triage Treecare Operations Management System</h1>
+
+<p>Fleet Maintenance Dashboard</p>
+
+</header>
+
+<nav>
+
+<a href="office.html">Office Dashboard</a>
+
+<a href="customer.html">Customer Portal</a>
+
+<a href="crew.html">Crew Dashboard</a>
+
+<a href="fleet.html">Fleet Dashboard</a>
+
+<a href="#">Reports</a>
+
+<a href="index.html">Logout</a>
+
+</nav>
+
+<main>
+
+<h2>Fleet Maintenance Dashboard</h2>
+
+<section class="cards">
+
+<div class="card">
+<h3>Vehicles</h3>
+<p class="number">18</p>
+<p>Active fleet vehicles</p>
+</div>
+
+<div class="card">
+<h3>Equipment</h3>
+<p class="number">46</p>
+<p>Registered equipment</p>
+</div>
+
+<div class="card">
+<h3>Maintenance Due</h3>
+<p class="number">5</p>
+<p>Requires service</p>
+</div>
+
+<div class="card">
+<h3>Safety Inspections</h3>
+<p class="number">2</p>
+<p>Pending completion</p>
+</div>
+
+</section>
+
+<section class="panel">
+
+<h3>Upcoming Maintenance</h3>
+
+<table>
+
+<tr>
+<th>Asset</th>
+<th>Type</th>
+<th>Next Service</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>Truck 12</td>
+<td>Bucket Truck</td>
+<td>July 10</td>
+<td>Scheduled</td>
+</tr>
+
+<tr>
+<td>Trailer 04</td>
+<td>Equipment Trailer</td>
+<td>July 12</td>
+<td>Due Soon</td>
+</tr>
+
+<tr>
+<td>Chainsaw CS-17</td>
+<td>Equipment</td>
+<td>July 14</td>
+<td>Pending Inspection</td>
+</tr>
+
+</table>
+
+</section>
+
+<section class="panel">
+
+<h3>Record Maintenance</h3>
+
+<form>
+
+<label>Select Asset</label>
+
+<select>
+
+<option>Truck 12</option>
+<option>Trailer 04</option>
+<option>Chainsaw CS-17</option>
+
+</select>
+
+<label>Maintenance Performed</label>
+
+<input type="text"
+placeholder="Oil change, tire replacement, inspection...">
+
+<label>Date Completed</label>
+
+<input type="date">
+
+<label>Technician Notes</label>
+
+<textarea rows="5"
+placeholder="Enter maintenance details"></textarea>
+
+<button type="button">
+
+Record Maintenance
+
+</button>
+
+</form>
+
+</section>
+
+</main>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

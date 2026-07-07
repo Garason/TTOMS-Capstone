@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TTOMS Crew Leader Dashboard</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+<h1>Triage Treecare Operations Management System</h1>
+<p>Crew Leader Dashboard</p>
+</header>
+
+<nav>
+
+<a href="office.html">Office Dashboard</a>
+
+<a href="customer.html">Customer Portal</a>
+
+<a href="crew.html">Crew Dashboard</a>
+
+<a href="fleet.html">Fleet Dashboard</a>
+
+<a href="#">Reports</a>
+
+<a href="index.html">Logout</a>
+
+</nav>
+
+<main>
+
+<h2>Crew Leader Dashboard</h2>
+
+<section class="cards">
+
+<div class="card">
+<h3>Today's Jobs</h3>
+<p class="number">4</p>
+<p>Assigned work orders</p>
+</div>
+
+<div class="card">
+<h3>Crew Members</h3>
+<p class="number">6</p>
+<p>Employees assigned today</p>
+</div>
+
+<div class="card">
+<h3>Equipment Ready</h3>
+<p class="number">9</p>
+<p>Inspected and available</p>
+</div>
+
+<div class="card">
+<h3>Safety Alerts</h3>
+<p class="number">1</p>
+<p>Weather advisory active</p>
+</div>
+
+</section>
+
+<section class="panel">
+
+<h3>Today's Assigned Work Orders</h3>
+
+<table>
+<tr>
+<th>Work Order</th>
+<th>Customer</th>
+<th>Service Type</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr>
+<td>WO-2051</td>
+<td>John Davis</td>
+<td>Tree Removal</td>
+<td>Scheduled</td>
+<td><button>Start Job</button></td>
+</tr>
+
+<tr>
+<td>WO-2052</td>
+<td>Mary Wilson</td>
+<td>Tree Pruning</td>
+<td>In Progress</td>
+<td><button>Update</button></td>
+</tr>
+
+<tr>
+<td>WO-2053</td>
+<td>City Park</td>
+<td>Storm Cleanup</td>
+<td>Pending</td>
+<td><button>Begin</button></td>
+</tr>
+
+</table>
+
+</section>
+
+<section class="panel">
+
+<h3>Field Job Update</h3>
+
+<form>
+
+<label>Selected Work Order</label>
+<select>
+<option>WO-2051 - John Davis</option>
+<option>WO-2052 - Mary Wilson</option>
+<option>WO-2053 - City Park</option>
+</select>
+
+<label>Job Status</label>
+<select>
+<option>Scheduled</option>
+<option>In Progress</option>
+<option>Delayed</option>
+<option>Completed</option>
+</select>
+
+<label>Upload Job Photos</label>
+<input type="file">
+
+<label>Field Notes</label>
+<textarea rows="5" placeholder="Enter job notes, safety concerns, customer comments, or completion details"></textarea>
+
+<button type="button">Submit Job Update</button>
+
+</form>
+
+</section>
+
+</main>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
