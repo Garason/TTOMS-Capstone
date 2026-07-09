@@ -2,109 +2,115 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTOMS | Login</title>
 
-<title>TTOMS Login</title>
-
-<link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header>
+    <header>
 
-<h1>Triage Treecare Operations Management System</h1>
+        <h1>Triage Treecare Operations Management System</h1>
 
-<p>Secure User Login</p>
+        <p>
+            Business Operations Management Platform
+        </p>
 
-</header>
+    </header>
 
-<nav>
+    <nav>
 
-<a href="office.html">Office Dashboard</a>
+        <a href="office.html">Office Dashboard</a>
+        <a href="customer.html">Customer Portal</a>
+        <a href="crew.html">Crew Dashboard</a>
+        <a href="fleet.html">Fleet Dashboard</a>
+        <a href="#">Reports</a>
+        <a href="https://garason.github.io/landing-page/">Return to Portfolio</a>
 
-<a href="customer.html">Customer Portal</a>
+    </nav>
 
-<a href="crew.html">Crew Dashboard</a>
+    <main>
 
-<a href="fleet.html">Fleet Dashboard</a>
+        <section class="panel login-panel">
 
-<a href="#">Reports</a>
+            <h2>User Login</h2>
 
-<a href="https://garason.github.io/landing-page/">Logout</a>
+            <p class="login-description">
+                This demonstration showcases the TTOMS interface and workflow.
+                User authentication has been disabled for portfolio purposes.
+            </p>
 
-</nav>
+            <form>
 
-<main>
+                <label for="username">Username</label>
 
-<section class="panel" style="max-width:500px; margin:auto; margin-top:40px;">
+                <input
+                    id="username"
+                    type="text"
+                    placeholder="Enter Username">
 
-<h2 style="text-align:center;">User Login</h2>
+                <label for="password">Password</label>
 
-<form>
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter Password">
 
-<label>Username</label>
+                <button
+                    type="button"
+                    onclick="window.location.href='office.html'">
 
-<input
-type="text"
-placeholder="Enter Username">
+                    Enter Demo
 
-<label>Password</label>
+                </button>
 
-<input
-type="password"
-placeholder="Enter Password">
+            </form>
 
-<br><br>
+            <div class="demo-note">
 
-<button
-type="button"
-onclick="window.location.href='office.html'">
+                <strong>Portfolio Demonstration</strong>
 
-Login
+                <p>
+                    No login credentials are required.
+                    Simply click <strong>Enter Demo</strong> to explore the TTOMS
+                    dashboards and application workflow.
+                </p>
 
-</button>
+            </div>
 
-</form>
+            <hr>
 
-<br>
+            <h3>Platform Capabilities</h3>
 
-<p style="text-align:center;">
+            <ul>
 
-<a href="#">Forgot Password?</a>
+                <li>Customer Relationship Management</li>
 
-</p>
+                <li>Service Request Management</li>
 
-<hr>
+                <li>Work Order Scheduling</li>
 
-<h3>TTOMS Features</h3>
+                <li>Crew Assignment & Tracking</li>
 
-<ul>
+                <li>Fleet Maintenance Management</li>
 
-<li>Customer Management</li>
+                <li>Equipment Inspection Tracking</li>
 
-<li>Service Requests</li>
+                <li>Employee Certification Management</li>
 
-<li>Work Order Scheduling</li>
+                <li>Operational Reporting & Analytics</li>
 
-<li>Fleet Management</li>
+            </ul>
 
-<li>Equipment Inspections</li>
+        </section>
 
-<li>Employee Certification Tracking</li>
+    </main>
 
-<li>Management Reporting</li>
-
-</ul>
-
-</section>
-
-</main>
-
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
