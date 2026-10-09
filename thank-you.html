@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Thank You | Triage Treecare</title>
+        <link rel="stylesheet" href="css/style.css?v=20260912-workorder1" />
+    </head>
+    <body data-page="thank-you">
+        <header>
+            <h1>Triage Treecare</h1>
+            <p>Customer Service</p>
+        </header>
+        <main class="thank-you-page">
+            <section
+                id="request-confirmation"
+                class="panel"
+                hidden
+                aria-labelledby="thank-you-title"
+            >
+                <p class="eyebrow">Request received</p>
+                <h2 id="thank-you-title">Thank you for choosing Triage Treecare!</h2>
+                <p>
+                    We appreciate your business and the opportunity to care for your trees. Your
+                    service request has been received, and an arborist will be in touch shortly.
+                </p>
+                <p class="request-reference">
+                    Your request number: <strong id="confirmation-request-id"></strong>
+                </p>
+                <h3>What happens next?</h3>
+                <ol class="next-steps">
+                    <li>
+                        <strong>We’ll review your request.</strong> Our team will look over the
+                        service details and any concerns you shared.
+                    </li>
+                    <li>
+                        <strong>An arborist will contact you.</strong> We’ll use the phone number or
+                        email address you provided to discuss your trees, answer questions, and
+                        arrange a visit if needed.
+                    </li>
+                    <li>
+                        <strong>We’ll coordinate the next steps.</strong> After reviewing the work
+                        with you, our office will help arrange scheduling and crew assignment.
+                    </li>
+                </ol>
+                <p>
+                    Your request is awaiting review. A service appointment has not been scheduled
+                    yet.
+                </p>
+                <p>Thank you for trusting us with your property. We look forward to helping!</p>
+                <a class="confirmation-link" href="customer.html">Submit another request</a>
+            </section>
+            <section id="confirmation-unavailable" class="panel" hidden>
+                <h2>Looking for your request confirmation?</h2>
+                <p>
+                    We couldn’t find a saved request for this confirmation in this browser. If you
+                    haven’t submitted a request yet, please complete our service request form.
+                </p>
+                <a class="confirmation-link" href="customer.html">Go to the service request form</a>
+            </section>
+            <noscript><p>Please enable JavaScript to view your request confirmation.</p></noscript>
+        </main>
+        <footer>Triage Treecare</footer>
+        <script src="js/script.js?v=20260912-client"></script>
+    </body>
+</html>

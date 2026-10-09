@@ -1,117 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TTOMS | Demo Home</title>
 
-    <title>TTOMS | Login</title>
+        <link rel="stylesheet" href="css/style.css?v=20260912-workorder1" />
+    </head>
 
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <body>
+        <header>
+            <h1>Triage Treecare Operations Management System</h1>
 
-<body>
+            <p>Business Operations Management Platform</p>
+        </header>
 
-    <header>
+        <nav>
+            <a href="office.html">Office Dashboard</a>
+            <a href="customer.html">Customer Portal</a>
+            <a href="crew.html">Crew Dashboard</a>
+            <a href="reports.html">Reports</a>
+            <a href="https://garason.github.io/landing-page/">Return to Portfolio</a>
+        </nav>
 
-        <h1>Triage Treecare Operations Management System</h1>
-
-        <p>
-            Business Operations Management Platform
-        </p>
-
-    </header>
-
-    <nav>
-
-        <a href="office.html">Office Dashboard</a>
-        <a href="customer.html">Customer Portal</a>
-        <a href="crew.html">Crew Dashboard</a>
-        <a href="fleet.html">Fleet Dashboard</a>
-        <a href="#">Reports</a>
-        <a href="https://garason.github.io/landing-page/">Return to Portfolio</a>
-
-    </nav>
-
-    <main>
-
-        <section class="panel login-panel">
-
-            <h2>User Login</h2>
-
-            <p class="login-description">
-                This demonstration showcases the TTOMS interface and workflow.
-                User authentication has been disabled for portfolio purposes.
-            </p>
-
-            <form>
-
-                <label for="username">Username</label>
-
-                <input
-                    id="username"
-                    type="text"
-                    placeholder="Enter Username">
-
-                <label for="password">Password</label>
-
-                <input
-                    id="password"
-                    type="password"
-                    placeholder="Enter Password">
-
-                <button
-                    type="button"
-                    onclick="window.location.href='office.html'">
-
-                    Enter Demo
-
-                </button>
-
-            </form>
-
-            <div class="demo-note">
-
-                <strong>Portfolio Demonstration</strong>
-
+        <main>
+            <section class="panel login-panel">
+                <h2>TTOMS Workflow Demonstration</h2>
                 <p>
-                    No login credentials are required.
-                    Simply click <strong>Enter Demo</strong> to explore the TTOMS
-                    dashboards and application workflow.
+                    Submit a service request, schedule and assign work, record crew updates, and
+                    review job completion.
                 </p>
+                <p>
+                    This Planning Phase prototype uses browser storage. Database persistence and
+                    staff login with role authorization are planned for later capstone phases.
+                </p>
+                <p>
+                    <a href="office.html">Enter Office Demo</a> &nbsp;
+                    <a href="customer.html">Submit a Request</a>
+                </p>
+                <h3>Required Workflow</h3>
+                <ul>
+                    <li>Customer service requests</li>
+                    <li>Office scheduling and crew assignment</li>
+                    <li>Field status and notes</li>
+                    <li>Operational counts and completion status</li>
+                </ul>
+                <p>No login credentials are required in this build. Use fictional data.</p>
+            </section>
+        </main>
 
-            </div>
-
-            <hr>
-
-            <h3>Platform Capabilities</h3>
-
-            <ul>
-
-                <li>Customer Relationship Management</li>
-
-                <li>Service Request Management</li>
-
-                <li>Work Order Scheduling</li>
-
-                <li>Crew Assignment & Tracking</li>
-
-                <li>Fleet Maintenance Management</li>
-
-                <li>Equipment Inspection Tracking</li>
-
-                <li>Employee Certification Management</li>
-
-                <li>Operational Reporting & Analytics</li>
-
-            </ul>
-
-        </section>
-
-    </main>
-
-    <script src="js/script.js"></script>
-
-</body>
-
+        <script src="js/script.js?v=20260912-client"></script>
+    </body>
 </html>

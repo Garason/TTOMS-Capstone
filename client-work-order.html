@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Review Your Work Order | Triage Treecare</title>
+        <link rel="stylesheet" href="css/style.css?v=20260912-client" />
+    </head>
+    <body data-page="client-work-order">
+        <header>
+            <h1>Triage Treecare</h1>
+            <p>Your work order</p>
+        </header>
+        <nav aria-label="Client navigation"><a href="customer.html">Customer Portal</a></nav>
+        <main class="work-order-page">
+            <p class="notice">
+                Prototype: this page uses records saved in this browser. It does not verify client
+                identity or provide secure remote access.
+            </p>
+            <section id="client-missing" class="panel" hidden>
+                <h2>Work order unavailable</h2>
+                <p>
+                    Check your service request number. In this prototype, the record must exist in
+                    this browser.
+                </p>
+                <a href="customer.html">Return to Customer Portal</a>
+            </section>
+            <div id="client-content" hidden>
+                <section class="panel">
+                    <h2 id="client-title"></h2>
+                    <p>
+                        Please review the work, equipment, property-impact expectations, and
+                        negotiated price before confirming.
+                    </p>
+                    <dl id="client-details" class="stage-details"></dl>
+                </section>
+                <section class="panel">
+                    <h3>Confirm your work</h3>
+                    <p id="client-status" role="status"></p>
+                    <p id="client-ready"></p>
+                    <form id="client-confirm-form">
+                        <div class="full">
+                            <label for="client-name">Your full name</label
+                            ><input
+                                id="client-name"
+                                name="name"
+                                required
+                                maxlength="120"
+                                autocomplete="name"
+                            />
+                        </div>
+                        <div class="full">
+                            <label
+                                ><input id="client-consent" type="checkbox" required /> I have
+                                reviewed and approve the work scope, proposed method,
+                                property-impact expectations, and negotiated price shown
+                                above.</label
+                            >
+                        </div>
+                        <div class="full">
+                            <button type="submit">Confirm work and price</button>
+                        </div>
+                    </form>
+                    <p id="client-message" role="status" hidden></p>
+                </section>
+                <section class="panel">
+                    <h3>What happens next?</h3>
+                    <p>
+                        Our office will coordinate scheduling and crew assignment. Contact the sales
+                        team if any details need to change before you confirm.
+                    </p>
+                    <p>
+                        Online bill payment is planned for a future phase and is not available in
+                        this prototype. Confirmation does not collect a payment.
+                    </p>
+                </section>
+            </div>
+        </main>
+        <footer>Triage Treecare · Client review prototype</footer>
+        <script src="js/script.js?v=20260912-client"></script>
+        <script src="js/client-agreement.js?v=20260912-client"></script>
+        <script src="js/client-work-order.js?v=20260912-client"></script>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>TTOMS | Reports</title>
+        <link rel="stylesheet" href="css/style.css?v=20260912-workorder1" />
+    </head>
+
+    <body data-page="reports">
+        <header>
+            <h1>Triage Treecare Operations Management System</h1>
+            <p>Operational Reporting</p>
+        </header>
+
+        <nav>
+            <a href="office.html">Office</a>
+            <a href="customer.html">Customer Portal</a>
+            <a href="crew.html">Crew</a>
+            <a href="reports.html" aria-current="page">Reports</a>
+            <a href="index.html">Demo Home</a>
+        </nav>
+
+        <main>
+            <p class="eyebrow">Planning Phase Prototype</p>
+            <h2>Management Summary</h2>
+
+            <section class="cards">
+                <div class="card">
+                    <h3>Total Requests</h3>
+                    <p class="number" id="report-total">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Completed</h3>
+                    <p class="number" id="report-completed">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Open Assigned Jobs</h3>
+                    <p class="number" id="report-assigned">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Pending Review</h3>
+                    <p class="number" id="report-pending">0</p>
+                </div>
+            </section>
+
+            <div class="two-column">
+                <section class="panel">
+                    <h3>Requests by Status</h3>
+                    <div id="status-summary"></div>
+                </section>
+
+                <section class="panel">
+                    <h3>Recent System Activity</h3>
+                    <ol class="activity" id="activity-log"></ol>
+                </section>
+            </div>
+
+            <p class="notice">
+                <strong>Prototype limitation:</strong>
+                This Planning Phase build stores demonstration records in this browser. Server-side
+                persistence, authentication, access control, and a reproducible demonstration
+                release are planned for later capstone phases.
+            </p>
+        </main>
+
+        <footer>TTOMS Planning Phase functional prototype</footer>
+
+        <script src="js/script.js?v=20260912-client"></script>
+    </body>
+</html>

@@ -1,147 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>TTOMS | Crew Dashboard</title>
+        <link rel="stylesheet" href="css/style.css?v=20260912-workorder1" />
+    </head>
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <body data-page="crew">
+        <header>
+            <h1>Triage Treecare Operations Management System</h1>
+            <p>Crew Leader Dashboard</p>
+        </header>
 
-<title>TTOMS Crew Leader Dashboard</title>
+        <nav>
+            <a href="office.html">Office</a>
+            <a href="customer.html">Customer Portal</a>
+            <a href="crew.html" aria-current="page">Crew</a>
+            <a href="reports.html">Reports</a>
+            <a href="index.html">Demo Home</a>
+        </nav>
 
-<link rel="stylesheet" href="css/style.css">
-</head>
+        <main>
+            <p class="eyebrow">Planning Phase Prototype</p>
+            <section
+                id="crew-login-panel"
+                class="panel crew-login-panel"
+                aria-labelledby="crew-login-title"
+            >
+                <h2 id="crew-login-title">Crew Lead Login</h2>
+                <p>Select your crew lead to view your crew’s assigned work.</p>
+                <form id="crew-login-form">
+                    <div class="full">
+                        <label for="crew-lead">Crew Lead</label>
+                        <select
+                            id="crew-lead"
+                            name="crew"
+                            required
+                            aria-describedby="crew-login-note"
+                        >
+                            <option value="">Select a crew lead</option>
+                            <option value="Crew A">Crew A Lead</option>
+                            <option value="Crew B">Crew B Lead</option>
+                            <option value="Crew C">Crew C Lead</option>
+                        </select>
+                    </div>
+                    <div class="full"><button type="submit">Login</button></div>
+                </form>
+                <p id="crew-login-note" class="notice">
+                    <strong>Placeholder login:</strong> This dropdown is for demonstration only. It
+                    does not verify identity or provide secure access. Staff authentication and
+                    authorization will be added in a later phase.
+                </p>
+            </section>
+            <div id="crew-dashboard" hidden>
+                <div class="panel-heading">
+                    <div>
+                        <h2 id="crew-dashboard-title" tabindex="-1">Field Operations</h2>
+                        <p id="crew-login-summary"></p>
+                    </div>
+                    <button id="crew-logout" class="secondary" type="button">Log out</button>
+                </div>
+                <p class="notice">
+                    Demonstration access only. Secure authentication is not implemented.
+                </p>
 
-<body>
+                <div id="crew-message" role="status" aria-live="polite" hidden></div>
 
-<header>
-<h1>Triage Treecare Operations Management System</h1>
-<p>Crew Leader Dashboard</p>
-</header>
+                <section class="cards">
+                    <div class="card">
+                        <h3>Awaiting Scheduling</h3>
+                        <p class="number" id="crew-awaiting-count">0</p>
+                        <p>Office scheduling still needed</p>
+                    </div>
+                    <div class="card">
+                        <h3>Open Assigned Jobs</h3>
+                        <p class="number" id="job-count">0</p>
+                        <p>Assigned and not completed</p>
+                    </div>
 
-<nav>
+                    <div class="card">
+                        <h3>Completed Jobs</h3>
+                        <p class="number" id="crew-completed-count">0</p>
+                        <p>Finished by this crew</p>
+                    </div>
+                </section>
 
-<a href="office.html">Office Dashboard</a>
+                <section class="panel">
+                    <h3>Assigned Work Orders</h3>
+                    <p>
+                        Click anywhere on a work-order row to open customer details, arborist scope,
+                        sales agreement, crew discrepancies, and photos.
+                    </p>
 
-<a href="customer.html">Customer Portal</a>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Work Order</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Crew</th>
+                                    <th>Scheduled Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
 
-<a href="crew.html">Crew Dashboard</a>
+                            <tbody id="crew-work-orders"></tbody>
+                        </table>
+                    </div>
+                </section>
 
-<a href="fleet.html">Fleet Dashboard</a>
+                <section class="panel">
+                    <h3>Submit Field Update</h3>
+                    <p id="crew-scheduling-note" class="notice" hidden>
+                        Some assigned jobs are awaiting office scheduling. They appear above, but
+                        field updates are available only for scheduled work.
+                    </p>
 
-<a href="#">Reports</a>
+                    <form id="field-update-form">
+                        <div>
+                            <label for="work-order-select">Work Order</label>
+                            <select id="work-order-select" name="requestId" required></select>
+                        </div>
 
-<a href="index.html">Logout</a>
+                        <div>
+                            <label for="job-status">Job Status</label>
+                            <select id="job-status" name="status">
+                                <option>Scheduled</option>
+                                <option>In Progress</option>
+                                <option>Delayed</option>
+                                <option>Completed</option>
+                            </select>
+                        </div>
 
-</nav>
+                        <div class="full">
+                            <label for="notes">Field Notes</label>
+                            <textarea
+                                id="notes"
+                                name="notes"
+                                rows="4"
+                                required
+                                placeholder="Work completed, hazards, customer comments, or delay reason"
+                            ></textarea>
+                        </div>
 
-<main>
+                        <div class="full">
+                            <button type="submit">Save Field Update</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
 
-<h2>Crew Leader Dashboard</h2>
+        <footer>TTOMS Planning Phase functional prototype</footer>
 
-<section class="cards">
-
-<div class="card">
-<h3>Today's Jobs</h3>
-<p class="number">4</p>
-<p>Assigned work orders</p>
-</div>
-
-<div class="card">
-<h3>Crew Members</h3>
-<p class="number">6</p>
-<p>Employees assigned today</p>
-</div>
-
-<div class="card">
-<h3>Equipment Ready</h3>
-<p class="number">9</p>
-<p>Inspected and available</p>
-</div>
-
-<div class="card">
-<h3>Safety Alerts</h3>
-<p class="number">1</p>
-<p>Weather advisory active</p>
-</div>
-
-</section>
-
-<section class="panel">
-
-<h3>Today's Assigned Work Orders</h3>
-
-<table>
-<tr>
-<th>Work Order</th>
-<th>Customer</th>
-<th>Service Type</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-
-<tr>
-<td>WO-2051</td>
-<td>John Davis</td>
-<td>Tree Removal</td>
-<td>Scheduled</td>
-<td><button>Start Job</button></td>
-</tr>
-
-<tr>
-<td>WO-2052</td>
-<td>Mary Wilson</td>
-<td>Tree Pruning</td>
-<td>In Progress</td>
-<td><button>Update</button></td>
-</tr>
-
-<tr>
-<td>WO-2053</td>
-<td>City Park</td>
-<td>Storm Cleanup</td>
-<td>Pending</td>
-<td><button>Begin</button></td>
-</tr>
-
-</table>
-
-</section>
-
-<section class="panel">
-
-<h3>Field Job Update</h3>
-
-<form>
-
-<label>Selected Work Order</label>
-<select>
-<option>WO-2051 - John Davis</option>
-<option>WO-2052 - Mary Wilson</option>
-<option>WO-2053 - City Park</option>
-</select>
-
-<label>Job Status</label>
-<select>
-<option>Scheduled</option>
-<option>In Progress</option>
-<option>Delayed</option>
-<option>Completed</option>
-</select>
-
-<label>Upload Job Photos</label>
-<input type="file">
-
-<label>Field Notes</label>
-<textarea rows="5" placeholder="Enter job notes, safety concerns, customer comments, or completion details"></textarea>
-
-<button type="button">Submit Job Update</button>
-
-</form>
-
-</section>
-
-</main>
-
-<script src="js/script.js"></script>
-
-</body>
+        <script src="js/script.js?v=20260912-client"></script>
+    </body>
 </html>

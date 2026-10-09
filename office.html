@@ -1,120 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>TTOMS | Office Dashboard</title>
+        <link rel="stylesheet" href="css/style.css?v=20260912-workorder1" />
+    </head>
 
-<head>
+    <body data-page="office">
+        <header>
+            <h1>Triage Treecare Operations Management System</h1>
+            <p>Office Administrator Dashboard</p>
+        </header>
 
-<meta charset="UTF-8">
+        <nav>
+            <a href="office.html" aria-current="page">Office</a>
+            <a href="customer.html">Customer Portal</a>
+            <a href="crew.html">Crew</a>
+            <a href="reports.html">Reports</a>
+            <a href="index.html">Demo Home</a>
+        </nav>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+        <main>
+            <p class="eyebrow">Planning Phase Prototype</p>
+            <h2>Operations Overview</h2>
 
-<title>TTOMS</title>
+            <div id="office-message" role="status" aria-live="polite" hidden></div>
 
-<link rel="stylesheet" href="css/style.css">
+            <section class="cards">
+                <div class="card">
+                    <h3>New Requests</h3>
+                    <p class="number" id="new-count">0</p>
+                    <p>Awaiting review</p>
+                </div>
 
-</head>
+                <div class="card">
+                    <h3>Open Work Orders</h3>
+                    <p class="number" id="open-count">0</p>
+                    <p>Excludes completed and cancelled</p>
+                </div>
 
-<body>
+                <div class="card">
+                    <h3>Active Assigned Crews</h3>
+                    <p class="number" id="crew-count">0</p>
+                    <p>Assigned crews</p>
+                </div>
 
-<header>
+                <div class="card">
+                    <h3>Completed Jobs</h3>
+                    <p class="number" id="completed-count">0</p>
+                    <p>Finished work</p>
+                </div>
+            </section>
 
-<h1>Triage Treecare Operations Management System</h1>
+            <section class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Service Request Workflow</h3>
+                        <p>
+                            Assign a crew, schedule the job, and update its status. Changes persist
+                            across dashboards.
+                        </p>
+                    </div>
 
-<p>Office Administrator Dashboard</p>
+                    <button id="reset-demo" class="secondary" type="button">Reset Demo Data</button>
+                </div>
 
-</header>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request</th>
+                                <th>Customer</th>
+                                <th>Service</th>
+                                <th>Current Status</th>
+                                <th>Crew</th>
+                                <th>Date</th>
+                                <th>Update Status</th>
+                            </tr>
+                        </thead>
 
-<nav>
+                        <tbody id="office-requests"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
 
-<a href="office.html">Office Dashboard</a>
+        <footer>TTOMS Planning Phase functional prototype</footer>
 
-<a href="customer.html">Customer Portal</a>
-
-<a href="crew.html">Crew Dashboard</a>
-
-<a href="fleet.html">Fleet Dashboard</a>
-
-<a href="#">Reports</a>
-
-<a href="index.html">Logout</a>
-
-</nav>
-
-<main>
-
-<h2>Office Administrator Dashboard</h2>
-
-<section class="cards">
-
-<div class="card">
-<h3>New Service Requests</h3>
-<p class="number">12</p>
-<p>Requests awaiting review</p>
-</div>
-
-<div class="card">
-<h3>Open Work Orders</h3>
-<p class="number">24</p>
-<p>Jobs currently active</p>
-</div>
-
-<div class="card">
-<h3>Scheduled Crews</h3>
-<p class="number">6</p>
-<p>Crews assigned today</p>
-</div>
-
-<div class="card">
-<h3>Fleet Alerts</h3>
-<p class="number">3</p>
-<p>Vehicles or equipment needing attention</p>
-</div>
-
-</section>
-
-<section class="panel">
-
-<h3>Recent Work Orders</h3>
-
-<table>
-<tr>
-<th>Work Order</th>
-<th>Customer</th>
-<th>Service Type</th>
-<th>Status</th>
-<th>Crew</th>
-</tr>
-
-<tr>
-<td>WO-1045</td>
-<td>James Miller</td>
-<td>Tree Removal</td>
-<td>Scheduled</td>
-<td>Crew A</td>
-</tr>
-
-<tr>
-<td>WO-1046</td>
-<td>Sarah Johnson</td>
-<td>Storm Cleanup</td>
-<td>In Progress</td>
-<td>Crew B</td>
-</tr>
-
-<tr>
-<td>WO-1047</td>
-<td>Lee County Office</td>
-<td>Pruning</td>
-<td>Pending Review</td>
-<td>Unassigned</td>
-</tr>
-
-</table>
-
-</section>
-
-</main>
-
-</body>
-
+        <script src="js/script.js?v=20260912-client"></script>
+    </body>
 </html>

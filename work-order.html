@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Work Order | TTOMS</title>
+        <link rel="stylesheet" href="css/style.css?v=20260912-workorder1" />
+    </head>
+    <body data-page="work-order">
+        <header>
+            <h1>Triage Treecare Operations Management System</h1>
+            <p>Shared Work Order</p>
+        </header>
+        <nav aria-label="Main navigation">
+            <a href="office.html">Office</a><a href="crew.html">Crew</a
+            ><a href="reports.html">Reports</a><a href="index.html">Demo Home</a>
+        </nav>
+        <main class="work-order-page">
+            <section id="work-order-missing" class="panel" hidden>
+                <h2>Work order unavailable</h2>
+                <p>
+                    This request could not be found in this browser. Return to the office to choose
+                    an existing work order.
+                </p>
+                <a href="office.html">Return to Office</a>
+            </section>
+            <div id="work-order-content" hidden>
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">
+                            Arborist assessment → Sales agreement → Crew execution
+                        </p>
+                        <h2 id="work-order-title"></h2>
+                        <p id="work-order-subtitle"></p>
+                    </div>
+                    <button type="button" id="print-work-order">Print work order</button>
+                </div>
+                <p class="notice no-print">
+                    Prototype: notes and photos are saved only in this browser. Role labels identify
+                    contributions; they do not authenticate staff or enforce permissions.
+                </p>
+                <p id="work-order-message" role="status" aria-live="polite" hidden></p>
+                <section class="panel" aria-labelledby="details-title">
+                    <h3 id="details-title">Customer and job details</h3>
+                    <dl id="work-order-details" class="work-order-details"></dl>
+                    <h4>Original customer request</h4>
+                    <p id="work-order-description" class="saved-text"></p>
+                </section>
+                <p class="work-order-guide">
+                    Keep the same tree or location reference in each assessment and photo
+                    caption—for example, “T1, beside the driveway”—so the arborist’s findings, sales
+                    agreement, and crew’s completed work or discrepancies can be matched.
+                </p>
+                <section class="panel">
+                    <h3>Client review and confirmation</h3>
+                    <p id="client-confirmation-status"></p>
+                    <a id="client-work-order-link">Open client work-order view</a>
+                    <p>
+                        Sales discussion status does not substitute for the client confirming the
+                        work.
+                    </p>
+                </section>
+                <div id="work-order-sections"></div>
+                <section class="panel" aria-labelledby="history-title">
+                    <h3 id="history-title">Work-order history</h3>
+                    <ol id="work-order-history" class="activity"></ol>
+                </section>
+            </div>
+        </main>
+        <footer>TTOMS Planning Phase functional prototype</footer>
+        <script src="js/script.js?v=20260912-client"></script>
+        <script src="js/client-agreement.js?v=20260912-client"></script>
+        <script src="js/work-order.js?v=20260912-client"></script>
+    </body>
+</html>
