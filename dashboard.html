@@ -10,23 +10,35 @@
 </head>
 <body data-page="dashboard">
   <a class="skip-link" href="#main">Skip to main content</a>
-  <header class="site-header">
-    <div><a class="brand" href="dashboard.html">Triage Treecare</a><span>Secure Dashboard</span></div>
-    <nav aria-label="Primary"><a href="dashboard.html" aria-current="page">Dashboard</a><a href="index.html">Planning prototype</a></nav>
-  </header>
-  <main id="main" class="container">
-    <section class="hero" aria-labelledby="page-title">
-      <p class="eyebrow">Capstone deployment phase</p>
-      <h1 id="page-title">Operations dashboard</h1>
-      <p id="dashboard-intro">Review authorized service requests and complete the tasks assigned to your role.</p>
-    </section>
-    <section id="session-panel" class="panel" hidden aria-labelledby="session-title">
-      <p class="eyebrow">Authenticated session</p>
-      <div class="section-heading"><div><h2 id="session-title">Signed in</h2><p id="session-summary"></p></div><button id="logout" type="button" class="secondary">Sign out</button></div>
-    </section>
-    <p id="message" class="message full" hidden role="status" aria-live="polite"></p>
-    <section id="workspace" hidden>
-      <div class="workspace-layout">
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar">
+      <a class="dashboard-brand" href="dashboard.html"><span class="brand-mark" aria-hidden="true">T</span><span><strong>Triage Treecare</strong><small>Operations Management</small></span></a>
+      <nav class="dashboard-nav" aria-label="Dashboard">
+        <a href="dashboard.html" aria-current="page"><span aria-hidden="true">▦</span> Overview</a>
+        <a href="#records-title"><span aria-hidden="true">≡</span> Work requests</a>
+        <a href="deployment.html"><span aria-hidden="true">＋</span> New request</a>
+      </nav>
+      <section id="session-panel" class="session-card" hidden aria-labelledby="session-title">
+        <div class="avatar" aria-hidden="true">TT</div>
+        <div><h2 id="session-title">Signed in</h2><p id="session-summary"></p></div>
+        <button id="logout" type="button" class="sidebar-logout">Sign out</button>
+      </section>
+    </aside>
+    <main id="main" class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div><p class="eyebrow">Capstone deployment phase</p><h1 id="page-title">Operations dashboard</h1><p id="dashboard-intro">Review authorized service requests and complete the tasks assigned to your role.</p></div>
+        <a class="primary-action" href="deployment.html">New service request</a>
+      </header>
+
+      <section class="metric-grid" aria-label="Request summary">
+        <article class="metric-card"><span class="metric-icon">▤</span><div><p>Total authorized</p><strong id="record-count">0</strong></div></article>
+        <article class="metric-card"><span class="metric-icon warning">!</span><div><p>Needs approval</p><strong id="pending-count">0</strong></div></article>
+        <article class="metric-card"><span class="metric-icon success">✓</span><div><p>Approved</p><strong id="approved-count">0</strong></div></article>
+      </section>
+
+      <p id="message" class="message full" hidden role="status" aria-live="polite"></p>
+      <section id="workspace" hidden>
+        <div class="workspace-layout">
         <section class="panel records" aria-labelledby="records-title">
           <div class="section-heading"><h2 id="records-title">Authorized records</h2><button id="refresh" type="button" class="secondary">Refresh</button></div>
           <div class="table-wrap"><table><thead><tr><th>Request</th><th>Customer</th><th>Status</th><th>Approval</th></tr></thead><tbody id="records-body"></tbody></table></div>
@@ -41,8 +53,9 @@
           <form id="crew-form" class="role-form" data-role="crew" hidden><h3>Crew field update</h3><label>Status<select name="status"><option>In Progress</option><option>Delayed</option><option>Completed</option></select></label><label>Work performed<textarea name="crew_notes" required></textarea></label><label>Discrepancies<textarea name="discrepancies"></textarea></label><button>Save assigned crew update</button></form>
           <h3>Activity history</h3><ol id="activity"></ol>
         </section>
-      </div>
-    </section>
-  </main>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
