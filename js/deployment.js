@@ -26,6 +26,11 @@
     if ($('workspace')) $('workspace').hidden=!session;
     if(!session) return;
     $('session-summary').textContent=`${session.display_name} — ${session.role}${session.crew?` (${session.crew})`:''}`;
+    if (isDashboard) {
+      const roleName = session.role === 'crew' && session.crew ? session.crew : session.role;
+      $('page-title').textContent = `${roleName[0].toUpperCase()+roleName.slice(1)} dashboard`;
+      document.title = `TTOMS ${roleName[0].toUpperCase()+roleName.slice(1)} Dashboard`;
+    }
     document.querySelectorAll('.role-form').forEach(form=>form.hidden=form.dataset.role!==session.role);
   }
   async function loadRecords(){
@@ -47,7 +52,7 @@
   }
   $('login-form')?.addEventListener('submit',async e=>{e.preventDefault();try{const state=await request('/api/login',{method:'POST',body:JSON.stringify(formData(e.currentTarget))});session=state.user;csrf=state.csrf;window.location.assign('dashboard.html');}catch(err){message(err.message,true);}});
   $('logout')?.addEventListener('click',async()=>{try{await request('/api/logout',{method:'POST',body:'{}'});}finally{session=null;csrf='';selectedId=null;window.location.replace('deployment.html');}});
-  $('request-form')?.addEventListener('submit',async e=>{e.preventDefault();try{const result=await request('/api/requests',{method:'POST',body:JSON.stringify(formData(e.currentTarget))});e.currentTarget.reset();message(`${result.id} was saved in the central database.`);if(session)await loadRecords();}catch(err){message(err.message,true);}});
+  $('request-form')?.addEventListener('submit',async e=>{e.preventDefault();try{const result=await request('/api/requests',{method:'POST',body:JSON.stringify(formData(e.currentTarget))});window.location.assign(`request-confirmation.html?id=${encodeURIComponent(result.id)}`);}catch(err){message(err.message,true);}});
   $('records-body')?.addEventListener('click',e=>{const button=e.target.closest('[data-id]');if(button)openRecord(button.dataset.id).catch(err=>message(err.message,true));});
   $('refresh')?.addEventListener('click',()=>loadRecords().catch(err=>message(err.message,true)));
   $('scope-form')?.addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'scope');});
