@@ -35,6 +35,9 @@
   }
   async function loadRecords(){
     const records=await request('/api/requests');
+    if ($('record-count')) $('record-count').textContent=records.length;
+    if ($('pending-count')) $('pending-count').textContent=records.filter(r=>!r.approved).length;
+    if ($('approved-count')) $('approved-count').textContent=records.filter(r=>r.approved).length;
     $('records-body').innerHTML=records.map(r=>`<tr><td><button class="link-button" data-id="${r.id}">${r.id}</button></td><td>${escapeHtml(r.customer_name)}</td><td>${escapeHtml(r.status)}</td><td class="${r.approved?'approved':'needs-approval'}">${r.approved?'Current':'Required'}</td></tr>`).join('') || '<tr><td colspan="4">No records are available for this account.</td></tr>';
     if(selectedId && records.some(r=>r.id===selectedId)) await openRecord(selectedId); else {selectedId=null;$('record-panel').hidden=true;}
   }
