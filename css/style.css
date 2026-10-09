@@ -153,6 +153,9 @@ button:hover, .button:hover, .confirmation-link:hover { background: var(--green-
 .notice, .demo-note, .work-order-guide { padding: 16px 18px; border-top: 1px solid rgb(228, 213, 164); border-right: 1px solid rgb(228, 213, 164); border-bottom: 1px solid rgb(228, 213, 164); border-image: none; border-left: 4px solid var(--accent); border-radius: 12px; background: rgb(255, 251, 239); }
 .login-panel, .crew-login-panel { max-width: 760px; margin: 24px auto; padding: clamp(30px, 5vw, 54px); }
 .login-panel h2, .crew-login-panel h2 { font-size: clamp(1.8rem, 3vw, 2.55rem); line-height: 1.1; }
+body:not([data-page]) .login-panel > p a { display: inline-flex; align-items: center; min-height: 44px; margin: 4px 8px 4px 0px; padding: 10px 16px; border-radius: 10px; background: var(--green); color: rgb(255, 255, 255); font-weight: 750; text-decoration: none; box-shadow: rgba(23, 107, 78, 0.18) 0px 6px 16px; }
+body:not([data-page]) .login-panel > p a + a { background: rgb(255, 255, 255); color: var(--green-strong); border: 1px solid rgb(191, 209, 201); box-shadow: none; }
+body:not([data-page]) .login-panel ul { display: grid; grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 10px 24px; padding: 18px 20px 18px 42px; border-radius: 12px; background: var(--soft); }
 .two-column { gap: 24px; }
 .activity { padding-left: 22px; }
 .activity li { padding: 10px 0px 10px 6px; border-bottom: 1px solid var(--line); }
@@ -172,4 +175,5 @@ body > footer { padding: 34px; border-top: 1px solid var(--line); background: rg
   .cards { grid-template-columns: 1fr; }
   .card { min-height: 132px; }
   .panel { padding: 21px; }
+  body:not([data-page]) .login-panel ul { grid-template-columns: 1fr; }
 }
