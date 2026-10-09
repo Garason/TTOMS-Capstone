@@ -13,9 +13,17 @@
   };
   const formData = (form) => Object.fromEntries(new FormData(form));
   const fill = (form, record) => { for(const field of form.elements){ if(field.name && record[field.name] !== undefined && field.type !== 'checkbox') field.value=record[field.name] ?? ''; } };
-  async function restore(){ const state=await request('/api/session'); session=state.user; csrf=state.csrf||''; renderSession(); if(session) await loadRecords(); }
+  const isDashboard = document.body.dataset.page === 'dashboard';
+  async function restore(){
+    const state=await request('/api/session'); session=state.user; csrf=state.csrf||'';
+    if (isDashboard && !session) { window.location.replace('deployment.html'); return; }
+    if (!isDashboard && session) { window.location.replace('dashboard.html'); return; }
+    renderSession(); if(session) await loadRecords();
+  }
   function renderSession(){
-    $('auth-panel').hidden=!!session; $('session-panel').hidden=!session; $('workspace').hidden=!session;
+    if ($('auth-panel')) $('auth-panel').hidden=!!session;
+    if ($('session-panel')) $('session-panel').hidden=!session;
+    if ($('workspace')) $('workspace').hidden=!session;
     if(!session) return;
     $('session-summary').textContent=`${session.display_name} — ${session.role}${session.crew?` (${session.crew})`:''}`;
     document.querySelectorAll('.role-form').forEach(form=>form.hidden=form.dataset.role!==session.role);
@@ -37,15 +45,15 @@
     if(!selectedId) return message('Select a record first.',true);
     try{await request(`/api/requests/${selectedId}/${action}`,{method:'PATCH',body:JSON.stringify(transform(formData(form)))});message(`${action[0].toUpperCase()+action.slice(1)} update saved.`);await loadRecords();}catch(e){message(e.message,true);}
   }
-  $('login-form').addEventListener('submit',async e=>{e.preventDefault();try{const state=await request('/api/login',{method:'POST',body:JSON.stringify(formData(e.currentTarget))});session=state.user;csrf=state.csrf;renderSession();message(`Signed in as ${session.display_name}.`);await loadRecords();}catch(err){message(err.message,true);}});
-  $('logout').addEventListener('click',async()=>{try{await request('/api/logout',{method:'POST',body:'{}'});}finally{session=null;csrf='';selectedId=null;renderSession();$('record-panel').hidden=true;message('Signed out.');}});
-  $('request-form').addEventListener('submit',async e=>{e.preventDefault();try{const result=await request('/api/requests',{method:'POST',body:JSON.stringify(formData(e.currentTarget))});e.currentTarget.reset();message(`${result.id} was saved in the central database.`);if(session)await loadRecords();}catch(err){message(err.message,true);}});
-  $('records-body').addEventListener('click',e=>{const button=e.target.closest('[data-id]');if(button)openRecord(button.dataset.id).catch(err=>message(err.message,true));});
-  $('refresh').addEventListener('click',()=>loadRecords().catch(err=>message(err.message,true)));
-  $('scope-form').addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'scope');});
-  $('sales-form').addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'sales');});
-  $('approval-form').addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'approval',()=>({confirm:e.currentTarget.elements.confirm.checked}));});
-  $('schedule-form').addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'schedule');});
-  $('crew-form').addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'crew');});
+  $('login-form')?.addEventListener('submit',async e=>{e.preventDefault();try{const state=await request('/api/login',{method:'POST',body:JSON.stringify(formData(e.currentTarget))});session=state.user;csrf=state.csrf;window.location.assign('dashboard.html');}catch(err){message(err.message,true);}});
+  $('logout')?.addEventListener('click',async()=>{try{await request('/api/logout',{method:'POST',body:'{}'});}finally{session=null;csrf='';selectedId=null;window.location.replace('deployment.html');}});
+  $('request-form')?.addEventListener('submit',async e=>{e.preventDefault();try{const result=await request('/api/requests',{method:'POST',body:JSON.stringify(formData(e.currentTarget))});e.currentTarget.reset();message(`${result.id} was saved in the central database.`);if(session)await loadRecords();}catch(err){message(err.message,true);}});
+  $('records-body')?.addEventListener('click',e=>{const button=e.target.closest('[data-id]');if(button)openRecord(button.dataset.id).catch(err=>message(err.message,true));});
+  $('refresh')?.addEventListener('click',()=>loadRecords().catch(err=>message(err.message,true)));
+  $('scope-form')?.addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'scope');});
+  $('sales-form')?.addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'sales');});
+  $('approval-form')?.addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'approval',()=>({confirm:e.currentTarget.elements.confirm.checked}));});
+  $('schedule-form')?.addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'schedule');});
+  $('crew-form')?.addEventListener('submit',e=>{e.preventDefault();submitRole(e.currentTarget,'crew');});
   restore().catch(err=>message(err.message,true));
 })();
