@@ -1,4 +1,4 @@
-# TTOMS Deployment Phase
+# Triage Treecare Operations Management System
 
 Andrew Garason — CSIS 484
 
@@ -24,7 +24,7 @@ The deployment server uses only the Python standard library; no package installa
 
 These credentials are intentionally limited to the local capstone demonstration and must not be reused in another system.
 
-## Deployment progress
+## Implemented server-backed component
 
 The new deployment console provides central SQLite persistence, PBKDF2 password hashing, server-side sessions, CSRF verification, staff/client role checks, protected record retrieval, client confirmation of versioned terms, an approval gate before scheduling, crew-assignment restrictions, and an append-only activity history. Server rules remain effective even when a caller bypasses the browser interface.
 
@@ -44,18 +44,18 @@ Sales records available equipment/capacity and client preferences to explain the
 ## Demonstrate the workflow
 Submit a request through Customer Portal and note its SR number. The successful save loads a separate thank-you page. Open its work order from Office. Save arborist assessment/scope, then sales method, impact expectations, agreed scope and price. Open the client work-order view (or enter the SR number in Customer Portal), review terms and confirm. Return to Office, assign a crew and date. On Crew, select that crew lead and click Login; click the assigned row to open the full work order. Save field notes, discrepancies and completion. Review updated operational counts in Reports.
 
-## Completed prototype and limits
+## Retained planning prototype
 Text uses localStorage (`ttomsPlanningCoreV2`); photos use IndexedDB (`ttomsWorkOrderPhotos`). Records persist locally across reloads but are not shared across devices. Photo copies are resized to 1800 pixels maximum. JPG, PNG and WebP uploads are limited to six per batch and 15 MB per original file. Contributor and tree-reference labels correlate images. Keep original photos separately. Print work order prints saved notes and photos.
 
-Crew login is a dropdown placeholder, not authentication. Staff role labels do not restrict editing. Client request numbers are not credentials, and the client page is not secure remote access. Client confirmation stores name, time and exact displayed terms; changed terms require reconfirmation, and stale approval attempts are rejected. Sales discussion status does not substitute for client approval. Scheduling currently requires crew/date but does not yet enforce verified client approval. Scope changes have a notes field; authenticated review routing is planned. Activity is a demonstration history, not a secure audit log.
+The limitations in this section apply only to the retained planning pages. The server-backed deployment console provides authenticated roles, protected client access, crew-assignment filtering, and an approval-enforced scheduling gate. It should still be treated as a local capstone demonstration rather than a production service.
 
 ## Remaining work through Closing
 See `docs/PROGRESS_AND_WBS.md`: Week 4 design; Weeks 4–5 persistence; Week 5 staff/client identity and permissions; Week 6 integration; Weeks 6–7 verification; Week 7 independent surrogate UAT; Week 8 final demonstration and delivery. Central demonstration photo storage, backup/restore and clean setup are required. Production hosting and large-scale operations are deferred. Canvas due dates govern phase submissions.
 
-## Package and submission
-Submit `Andrew_Garason_TTOMS_Week_3_Planning_Report.docx` separately from this ZIP. The report includes the same current workflow and five evidence figures. Screenshots depict isolated fictional test data, not data preloaded into a recipient's browser. Runtime text and photos are not included in the ZIP.
+## Repository contents
+Screenshots use isolated fictional test data. Runtime database files and uploaded content are not committed to the repository.
 
 Pages: `index.html`, `customer.html`, `thank-you.html`, `office.html`, `crew.html`, `work-order.html`, `client-work-order.html`, `reports.html`. Scripts and styles are in `js/` and `css/`. `docs/` contains scope, data definitions, progress and evidence; `tests/` contains developer results and the planned independent acceptance tasks.
 
 ## Development provenance
-Andrew Garason created the prior-coursework static interface, approved for reuse by Professor Eric M. Straw. The capstone adds the functioning browser prototype and planned central implementation. OpenAI Codex assisted with code/report revisions, browser checks and evidence capture in September 2026. These developer checks are separate from independent surrogate UAT, which remains pending. Baseline: https://github.com/Garason/TTOMS-Capstone.
+Andrew Garason created the prior-coursework static interface, approved for reuse by Professor Eric M. Straw. The capstone adds the functioning browser workflow and server-backed implementation. Developer checks are separate from independent surrogate UAT, which remains pending.
